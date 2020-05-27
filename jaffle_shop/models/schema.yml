@@ -30,3 +30,15 @@ models:
         tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+  - name: stg_payments
+    description: This model is mainly checking for payment_type additions
+    columns:
+      - name: payment_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: ['bank_transfer', 'coupon', 'credit_card', 'gift_card']
